@@ -65,18 +65,9 @@ function App() {
 
     const loadBlockchainData = async () => {
         const web3 = new Web3(Web3.givenProvider || "HTTP://127.0.0.1:7545");
-        const accounts = await web3.eth.getAccounts();
-        this.setState({ account: accounts[0] });
         const my_contract = new web3.eth.Contract(HELLO_ABI, HELLO_ADDRESS);
-        this.setState({ my_contract });
-        const taskCount = await my_contract.methods.getMessage().call();
-        // this.setState({ taskCount });
-        // for (var i = 1; i <= taskCount; i++) {
-        //     const task = await my_contract.methods.tasks(i).call();
-        //     this.setState({
-        //         tasks: [...this.state.tasks, task],
-        //     });
-        // }
+        const getMessage = await my_contract.methods.getMessage().call();
+        console.log("My message: " + getMessage);
     };
 
     useEffect(() => {
@@ -114,7 +105,7 @@ function App() {
                         <div>
                             <button
                                 className="my-btn"
-                                onClick={() => Disconnect()}
+                                onClick={() => loadBlockchainData()}
                             >
                                 Call Contract (get)
                             </button>
