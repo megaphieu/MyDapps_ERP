@@ -1,0 +1,57 @@
+// var
+
+$dark-theme: rgba(13, 21, 39, 0.9);
+$dark-theme-text: rgb(255, 255, 255);
+$dark-theme-btn-border: 2px solid rgb(255, 255, 255);
+$dark-theme-card: rgba(8, 56, 105, 0.911);
+
+$light-theme: rgba(245, 248, 194, 0.952);
+$light-theme-text: rgb(0, 0, 0);
+$light-theme-btn-border: 2px solid rgb(32, 32, 52);
+$light-theme-card: rgba(203, 241, 142, 0.932);
+
+// class
+body {
+  background-color: $dark-theme;
+  color: $dark-theme-text;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+  font-size: 1rem;
+  .my-btn {
+    background-color: transparent;
+    border-radius: 8px;
+    border: $dark-theme-btn-border;
+    color: $dark-theme-text;
+    font-size: 20px;
+  }
+  .card {
+    background-color: $dark-theme-card;
+    &__img {
+      width: 20%;
+      align-self: center;
+    }
+  }
+}
+
+body.light {
+  background-color: $light-theme;
+  color: $light-theme-text;
+  .my-btn {
+    border: $light-theme-btn-border;
+    color: $light-theme-text;
+  }
+  .card {
+    background-color: $light-theme-card;
+  }
+}
+
+section {
+  display: flex;
+  text-align: center;
+  padding: 15px;
+}
+
+.app {
+  text-align: center;
+  margin: 1rem auto;
+}
