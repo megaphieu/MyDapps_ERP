@@ -2,7 +2,7 @@ import Web3 from "web3";
 import { Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import ThemeChanger from "./components/ThemeChanger";
-import "./scss/styles.scss";
+import "./App.scss";
 import ProductList from "./components/ProductList";
 import { HELLO_ABI, HELLO_ADDRESS } from "./config";
 
@@ -77,7 +77,7 @@ function App() {
     return (
         <div className="App">
             <div className="container">
-                <ThemeChanger />
+                {/* <ThemeChanger /> */}
 
                 <ProductList />
 

@@ -1,0 +1,13 @@
+@import "../../scss/mixins";
+@import "../../scss/variables";
+
+.card {
+    background-color: $dark-theme-card;
+    margin: 5px;
+    min-height: fit-content;
+    min-width: 40%;
+    &__img {
+        height: 80px;
+        align-self: center;
+    }
+}
