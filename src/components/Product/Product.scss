@@ -1,0 +1,28 @@
+@import "../../scss/mixins";
+@import "../../scss/variables";
+
+.card {
+    @include flexRowAroundMixin;
+    background-color: $dark-theme-card;
+    margin: 5px;
+    min-height: fit-content;
+    min-width: 80%;
+    &__img {
+        width: 20%;
+        max-width: 20%;
+        min-width: 220px;
+        align-self: center;
+        img {
+            width: 100%;
+        }
+    }
+    &__body {
+        @include flexColCenterMixin;
+        padding: 10px 0px;
+        width: 60%;
+        min-width: 400px;
+        p {
+            text-align: start;
+        }
+    }
+}
