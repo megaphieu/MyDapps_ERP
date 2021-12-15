@@ -1,24 +1,35 @@
 @import "../../scss/mixins";
 @import "../../scss/variables";
 
-.my-input {
-    background-color: transparent;
+.myInput {
+    @include flexRowBetweenMixin;
+
+    width: 100%;
+    background-color: $dark-theme-input;
     border-radius: 8px;
     border: $dark-theme-btn-border;
     color: $dark-theme-text;
     font-size: 20px;
-    width: fit-content;
-    .btn{
-        background-color: transparent;
+
+    &-text {
+        width: 70%;
+        background-color: $transparent;
+        outline: none;
+        border: none;
+        color: $dark-theme-text;
+        padding: 10px 20px;
     }
-    .text{
-        background-color: transparent;
+    &-btn {
+        width: 30%;
+        font-weight: 600;
+        @include btnMixin($dark-theme-text, 20px, $dark-theme-btn-border, $transparent);
     }
 }
-
 .cardlist {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
+    @include flexRowCenterMixin;
+}
+
+hr {
+    border-color: rgba($color: #3c8bfa, $alpha: 0.7);
+    border-width: 2px;
 }

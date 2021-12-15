@@ -4,10 +4,18 @@ import "./Product.scss";
 function Product(props) {
     return (
         <div className="card">
-            <img className="card__img" src="favicon.ico" alt="" />
+            <div className="card__img">
+                <img
+                    src="https://previews.123rf.com/images/vladklok/vladklok1809/vladklok180900059/118475995-vector-meat-packaging-illustration-black-foam-meat-tray-with-plastic-film-mockup-modern-style-butche.jpg"
+                    alt=""
+                />
+            </div>
+
             <div className="card__body">
-                <h4 className="card__body__title">{props.data.title}</h4>
-                <p className="card__body__text">{props.data.text}</p>
+                <h4 className="card__body__title">Product code: {props.data.title}</h4>
+                <p className="card__body__text">Temperature info: {props.data.tempInfo}</p>
+                <p className="card__body__text">Score: {props.data.score}</p>
+                <p className="card__body__text">Quality: {props.data.quality}</p>
             </div>
         </div>
     );

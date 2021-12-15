@@ -3,3 +3,47 @@
     font-size: $font_size;
     font-weight: $font_weight;
 }
+
+@mixin btnMixin($text_color, $font_size, $border, $bg) {
+    background: $bg;
+    border-radius: 6px;
+    border: $border;
+    color: $text_color;
+    font-size: $font_size;
+}
+
+@mixin flexRowCenterMixin() {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+@mixin flexRowStartMixin() {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content:flex-start;
+}
+
+@mixin flexRowAroundMixin() {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content:space-around;
+}
+
+
+@mixin flexRowBetweenMixin() {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@mixin flexColCenterMixin() {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
