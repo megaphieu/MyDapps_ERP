@@ -10,6 +10,8 @@
     border: $dark-theme-btn-border;
     color: $dark-theme-text;
     font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
     &-text {
         width: 70%;
@@ -23,12 +25,20 @@
         width: 30%;
         font-weight: 600;
         @include btnMixin($dark-theme-text, 20px, $dark-theme-btn-border, $transparent);
+        img{
+            height: 30px;
+        }
+        cursor: wait;
     }
 }
 .cardlist {
     @include flexRowCenterMixin;
 }
-
+.notFound {
+    font-size: 20px;
+    color: $dark-theme-text;
+    padding: 10px 0px;
+}
 hr {
     border-color: rgba($color: #3c8bfa, $alpha: 0.7);
     border-width: 2px;

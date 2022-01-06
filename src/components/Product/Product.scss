@@ -21,8 +21,23 @@
         padding: 10px 0px;
         width: 60%;
         min-width: 400px;
-        p {
-            text-align: start;
-        }
     }
+    &__body__text {
+        text-align: start;
+    }
+    &__removeBtn {
+        margin: 10px 0px;
+        @include btnCircleMixin($dark-theme-text, 20px, $dark-theme-btn-border, $transparent);
+        height: fit-content;
+        width: fit-content;
+    }
+}
+.green {
+    color: $text-green;
+}
+.yellow {
+    color: $text-yellow;
+}
+.red {
+    color: $text-red;
 }
