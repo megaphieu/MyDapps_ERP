@@ -6,10 +6,13 @@ function Product(props) {
     switch (props.data.quality) {
         case "GOOD":
             qualityColor = "green";
+            break;
         case "AVERAGE":
             qualityColor = "yellow";
+            break;
         default:
             qualityColor = "red";
+            break;
     }
 
     return (
