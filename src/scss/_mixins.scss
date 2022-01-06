@@ -12,6 +12,14 @@
     font-size: $font_size;
 }
 
+@mixin btnCircleMixin($text_color, $font_size, $border, $bg) {
+    background: $bg;
+    border-radius: 50%;
+    border: $border;
+    color: $text_color;
+    font-size: $font_size;
+}
+
 @mixin flexRowCenterMixin() {
     display: flex;
     flex-wrap: wrap;

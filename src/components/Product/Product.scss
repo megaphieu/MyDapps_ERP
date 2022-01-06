@@ -21,8 +21,17 @@
         padding: 10px 0px;
         width: 60%;
         min-width: 400px;
-        p {
-            text-align: start;
-        }
     }
+    &__body__text {
+        text-align: start;
+    }
+}
+.green {
+    color: $text-green;
+}
+.yellow {
+    color: $text-yellow;
+}
+.red {
+    color: $text-red;
 }
