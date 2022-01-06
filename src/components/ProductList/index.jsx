@@ -45,10 +45,13 @@ function ProductList() {
         switch (productScore) {
             case productScore > 80:
                 productQuality = "GOOD";
+                break;
             case productScore > 50:
                 productQuality = "AVERAGE";
+                break;
             default:
                 productQuality = "BAD";
+                break;
         }
         // Add list
         let data = {
@@ -58,7 +61,7 @@ function ProductList() {
             quality: productQuality,
         };
         let product = <Product data={data} key={productCode} />;
-        list.find((i) => i.key == product.key) ? alert("Product duplicate!") : setList([...list, product]);
+        list.find((i) => i.key === product.key) ? alert("Product duplicate!") : setList([...list, product]);
         setLoading(false);
     };
 
@@ -110,7 +113,6 @@ function ProductList() {
                     )}
                 </div>
                 <hr />
-
             </div>
         </section>
     );
