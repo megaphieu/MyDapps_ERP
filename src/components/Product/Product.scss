@@ -25,12 +25,6 @@
     &__body__text {
         text-align: start;
     }
-    &__removeBtn {
-        margin: 10px 0px;
-        @include btnCircleMixin($dark-theme-text, 20px, $dark-theme-btn-border, $transparent);
-        height: fit-content;
-        width: fit-content;
-    }
 }
 .green {
     color: $text-green;

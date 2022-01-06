@@ -5,8 +5,6 @@ import { HELLO_ABI, HELLO_ADDRESS } from "../../config";
 import Product from "../Product";
 import "./ProductList.scss";
 import { create, all } from "mathjs";
-import { useEffect } from "react";
-import { waitFor } from "@testing-library/react";
 
 function ProductList() {
     const config = {};
@@ -27,7 +25,6 @@ function ProductList() {
     };
 
     const findProduct = async (productCode) => {
-        
         // Check product code
         if (productCode.length <= 0) {
             alert("Please fill in your product code!");
@@ -82,7 +79,6 @@ function ProductList() {
                         placeholder="Enter product code..."
                         onChange={(e) => setCode(e.target.value)}
                     />
-
                     <button
                         className="myInput-btn btn btn-outline-primary"
                         disabled={isLoading}
@@ -96,6 +92,15 @@ function ProductList() {
                     </button>
                 </div>
 
+                <button
+                    className="clearBtn btn btn-outline-danger"
+                    onClick={() => {
+                        setList([]);
+                    }}
+                >
+                    CLEAR ALL
+                </button>
+
                 <hr />
                 <div className="cardlist">
                     {list.length > 0 ? (
@@ -105,6 +110,7 @@ function ProductList() {
                     )}
                 </div>
                 <hr />
+
             </div>
         </section>
     );
