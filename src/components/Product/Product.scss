@@ -7,11 +7,14 @@
     margin: 5px;
     min-height: fit-content;
     min-width: 80%;
+    border-radius: 8px;
     &__img {
         width: 20%;
         max-width: 20%;
         min-width: 220px;
         align-self: center;
+        border-radius: 10%;
+        overflow: hidden;
         img {
             width: 100%;
         }
@@ -24,6 +27,7 @@
     }
     &__body__text {
         text-align: start;
+        @include textMixin($dark-theme-text, $font-size-small, 400);
     }
 }
 .green {

@@ -14,8 +14,7 @@ function ProductList() {
     let [list, setList] = useState([]);
     let [productCode, setCode] = useState("");
 
-    const scoreCalc = (temp, tempCap) => {
-        let tempList = temp.split(",").map((i) => parseInt(i));
+    const scoreCalc = (tempList, tempCap) => {
         let MEAN_SCORE = 0.5 * (100 - (40 + math.mean(tempList)));
         let RANGE_SCORE = math.min(tempList) > math.min(tempCap) && math.max(tempList) < math.max(tempCap) ? 50 : 0;
         return math.round(MEAN_SCORE + RANGE_SCORE, 1);
@@ -45,19 +44,22 @@ function ProductList() {
             setLoading(false);
             return;
         }
+
         // Score calculating
         const tempCap = [-45, -30];
-        let productScore = scoreCalc(temp, tempCap);
+        let tempList = Array.from(temp.split(",").map((i) => parseInt(i)));
+        let productScore = scoreCalc(tempList, tempCap);
         // Quality check
         let productQuality = productScore > 80 ? "GOOD" : productScore > 50 ? "AVERAGE" : "BAD";
         // Add list
         let data = {
-            code: productCode,
-            tempInfo: temp,
+            code: '"' + productCode + '"',
+            tempInfo: "[ " + tempList.toString() + " ]",
             score: productScore,
             quality: productQuality,
         };
         let product = <Product data={data} key={productCode} />;
+        // Check duplicate
         list.find((i) => i.key === product.key) ? alert("Product duplicate!") : setList([...list, product]);
         setLoading(false);
     };
