@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Web3 from "web3";
 import { useState } from "react";
-import { HELLO_ABI, HELLO_ADDRESS } from "../../config";
+import { MAIN_ABI, MAIN_ADDRESS } from "../../config";
 import Product from "../Product";
 import "./ProductList.scss";
 import { create, all } from "mathjs";
@@ -14,64 +14,65 @@ function ProductList() {
     let [list, setList] = useState([]);
     let [productCode, setCode] = useState("");
 
-    const scoreCalc = (temp, tempCap) => {
-        let tempList = temp
-            .slice(1, -1)
-            .split(", ")
-            .map((i) => parseInt(i));
+    const scoreCalc = (tempList, tempCap) => {
         let MEAN_SCORE = 0.5 * (100 - (40 + math.mean(tempList)));
         let RANGE_SCORE = math.min(tempList) > math.min(tempCap) && math.max(tempList) < math.max(tempCap) ? 50 : 0;
-        return MEAN_SCORE + RANGE_SCORE;
+        return math.round(MEAN_SCORE + RANGE_SCORE, 1);
     };
 
     const findProduct = async (productCode) => {
         // Check product code
+        setLoading(true);
         if (productCode.length <= 0) {
             alert("Please fill in your product code!");
+            setLoading(false);
             return;
         }
+
+        //--- bruh
+        if (productCode !== "meatId1") {
+            alert("Invalid product code!");
+            setLoading(false);
+            return;
+        }
+
         // Load & check data
-        setLoading(true);
-        let temp = await loadBlockchainData(productCode);
+        let temp;
+        temp = await loadBlockchainData(productCode);
         if (!temp) {
-            alert("Invalid code");
+            alert("Invalid product code!");
+            setLoading(false);
             return;
         }
+
         // Score calculating
         const tempCap = [-45, -30];
-        let productScore = scoreCalc(temp, tempCap);
+        let tempList = Array.from(temp.split(",").map((i) => parseInt(i)));
+        let productScore = scoreCalc(tempList, tempCap);
         // Quality check
-        let productQuality;
-        switch (productScore) {
-            case productScore > 80:
-                productQuality = "GOOD";
-                break;
-            case productScore > 50:
-                productQuality = "AVERAGE";
-                break;
-            default:
-                productQuality = "BAD";
-                break;
-        }
+        let productQuality = productScore > 80 ? "GOOD" : productScore > 50 ? "AVERAGE" : "BAD";
         // Add list
         let data = {
-            code: productCode,
-            tempInfo: temp,
+            code: '"' + productCode + '"',
+            tempInfo: "[ " + tempList.toString() + " ]",
             score: productScore,
             quality: productQuality,
         };
         let product = <Product data={data} key={productCode} />;
+        // Check duplicate
         list.find((i) => i.key === product.key) ? alert("Product duplicate!") : setList([...list, product]);
         setLoading(false);
     };
 
     const loadBlockchainData = async (productCode) => {
-        const web3 = new Web3(Web3.givenProvider || "HTTP://127.0.0.1:7545");
-        const my_contract = new web3.eth.Contract(HELLO_ABI, HELLO_ADDRESS);
-        const getMessage = await my_contract.methods.getMessage().call();
-        return getMessage;
+        const web3 = new Web3("HTTP://127.0.0.1:7545");
+        const my_contract = new web3.eth.Contract(MAIN_ABI, MAIN_ADDRESS);
+        my_contract.handleRevert = true;
+        const result = await my_contract.methods.getTempInfo().call();
+        return result;
     };
 
+    useEffect(() => {});
     return (
         <section>
             <div className="container">
