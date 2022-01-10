@@ -1,4 +1,4 @@
-export const MAIN_ADDRESS = "0x68eaB2837005A79A04fb41FC6C1f864bf0217061"
+export const MAIN_ADDRESS = "0x9EaA9F547E1Ba1062EC9B216D65B046259c4FB6B"
 
 export const MAIN_ABI = [
 	{
@@ -125,6 +125,60 @@ export const MAIN_ABI = [
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "initData1",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "initData2",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "initData3",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "initData4",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "initData5",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_meatId",
+				"type": "string"
+			}
+		],
+		"name": "checkMeatExist",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -156,19 +210,25 @@ export const MAIN_ABI = [
 				"type": "string"
 			}
 		],
-		"name": "findMeat",
+		"name": "getLogs",
 		"outputs": [
 			{
-				"internalType": "contract Meat",
+				"internalType": "contract ShippingLog[]",
 				"name": "",
-				"type": "address"
+				"type": "address[]"
 			}
 		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [],
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_meatId",
+				"type": "string"
+			}
+		],
 		"name": "getTempInfo",
 		"outputs": [
 			{
@@ -181,10 +241,27 @@ export const MAIN_ABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "initData",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "a",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "b",
+				"type": "string"
+			}
+		],
+		"name": "isEqual",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "pure",
 		"type": "function"
 	}
 ]
