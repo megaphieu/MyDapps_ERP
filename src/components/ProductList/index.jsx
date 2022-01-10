@@ -15,9 +15,11 @@ function ProductList() {
     let [productCode, setCode] = useState("");
 
     const scoreCalc = (tempList, tempCap) => {
-        let MEAN_SCORE = 0.5 * (100 - (40 + math.mean(tempList)));
-        let RANGE_SCORE = math.min(tempList) > math.min(tempCap) && math.max(tempList) < math.max(tempCap) ? 50 : 0;
-        return math.round(MEAN_SCORE + RANGE_SCORE, 1);
+        let MEAN_SCORE = 100 - 20 * math.abs(40 + math.mean(tempList));
+        console.log("MEAN_SCORE: " + MEAN_SCORE);
+        let RANGE_SCORE = math.min(tempList) >= math.min(tempCap) && math.max(tempList) <= math.max(tempCap) ? 100 : 0;
+        console.log("RANGE_SCORE: " + RANGE_SCORE);
+        return math.round(MEAN_SCORE * 0.5 + RANGE_SCORE * 0.5, 1);
     };
 
     const findProduct = async (productCode) => {
@@ -28,29 +30,19 @@ function ProductList() {
             setLoading(false);
             return;
         }
-
-        //--- bruh
-        if (productCode !== "meatId1") {
-            alert("Invalid product code!");
-            setLoading(false);
-            return;
-        }
-
         // Load & check data
-        let temp;
-        temp = await loadBlockchainData(productCode);
-        if (!temp) {
+        let temp = await loadBlockchainData(productCode);
+        if (!temp || temp === "error") {
             alert("Invalid product code!");
             setLoading(false);
             return;
         }
-
         // Score calculating
-        const tempCap = [-45, -30];
+        const tempCap = [-45, -35];
         let tempList = Array.from(temp.split(",").map((i) => parseInt(i)));
         let productScore = scoreCalc(tempList, tempCap);
         // Quality check
-        let productQuality = productScore > 80 ? "GOOD" : productScore > 50 ? "AVERAGE" : "BAD";
+        let productQuality = productScore >= 75 ? "GOOD" : productScore >= 50 ? "AVERAGE" : "BAD";
         // Add list
         let data = {
             code: '"' + productCode + '"',
@@ -68,7 +60,7 @@ function ProductList() {
         const web3 = new Web3("HTTP://127.0.0.1:7545");
         const my_contract = new web3.eth.Contract(MAIN_ABI, MAIN_ADDRESS);
         my_contract.handleRevert = true;
-        const result = await my_contract.methods.getTempInfo().call();
+        const result = await my_contract.methods.getTempInfo(productCode).call();
         return result;
     };
 
