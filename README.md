@@ -1,5 +1,6 @@
 # Đồ án CK ERP, đề tài Blockchain SCM
 ### Toàn bộ app được viết bằng ReactJS.
+https://github.com/megaphieu/MyDapps_ERP
 
 ## Nhóm
 - Trần Tiến Phát (maindev)
@@ -8,7 +9,7 @@
 - Trần Minh Tốt
 
 ## Hướng dẫn cài
-1. Tải về hoặc clone về.
+1. Tải về hoặc clone về: `git clone https://github.com/megaphieu/MyDapps_ERP.git`
 2. Cài Dependencies với: `npm install`
 3. Chạy app: `npm start`
 
