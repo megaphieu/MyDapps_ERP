@@ -1,6 +1,6 @@
 # Đồ án CK ERP, đề tài Blockchain SCM
-### Toàn bộ app được viết bằng ReactJS.
-https://github.com/megaphieu/MyDapps_ERP
+- Link Frontend React: https://github.com/megaphieu/MyDapps_ERP
+- Link Contracts: https://github.com/megaphieu/Contracts_ERP
 
 ## Nhóm
 - Trần Tiến Phát (maindev)
