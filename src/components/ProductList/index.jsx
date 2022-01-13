@@ -97,6 +97,11 @@ function ProductList() {
                     CLEAR ALL
                 </button>
 
+                <div className="note">
+                    <div>*Default best mean: -40.</div>
+                    <div>*Default range: [-45, -35].</div>
+                </div>
+
                 <hr />
                 <div className="cardlist">
                     {list.length > 0 ? (

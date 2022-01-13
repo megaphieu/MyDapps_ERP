@@ -39,6 +39,10 @@
     height: 50px;
     font-weight: 600;
 }
+.note {
+    @include textMixin($dark-theme-text-gray, $font-size-tiny, 400);
+    text-align: end;
+}
 .cardlist {
     @include flexRowCenterMixin;
 }
